@@ -3,12 +3,12 @@ import { stringToAllowedNumber } from '../helper/common';
 import { logger } from '../helper/logger';
 import { Limit } from '../models/Limit';
 import { clearScreen, globalCatch } from './app.config';
-import { Rectangle } from './rectangle';
+import { InputHandler } from './inputHandler';
 
 export class App {
   private amount: number;
   private done: string[] = [];
-  private current: Rectangle | null = null;
+  private current: InputHandler | null = null;
 
   private rl = readline.createInterface({
     input: process.stdin,
@@ -35,7 +35,7 @@ export class App {
 
   private readData(val: string): void {
     if (this.current == null) {
-      this.current = new Rectangle(val);
+      this.current = new InputHandler(val);
       return;
     }
 
